@@ -26,32 +26,22 @@ const points = [
 ];
 
 const vertices = [
-    0, 1, 2,
-    2, 3, 0,
-    4, 5, 6,
-    6, 7, 4,
-    0, 1, 4,
-    1, 4, 5,
-    1, 2, 5,
-    2, 5, 6,
-    2, 3, 6,
-    3, 6, 7,
-    3, 0, 7,
-    0, 7, 4
+    [0, 1, 2],
+    [2, 3, 0],
+    [4, 5, 6],
+    [6, 7, 4],
+    [0, 1, 4],
+    [1, 4, 5],
+    [1, 2, 5],
+    [2, 5, 6],
+    [2, 3, 6],
+    [3, 6, 7],
+    [3, 0, 7],
+    [0, 7, 4],
 ];
 
 const getVertices = function() {
-    const r = [];
-    const { length } = vertices;
-    let i;
-
-    for (i = 0; i < length; i += 3) {
-        r.push([
-            points[vertices[i]],
-            points[vertices[i + 1]],
-            points[vertices[i + 2]],
-        ]);
-    }
+    const r = vertices.map(v => v.map(i => points[i]));
     return r;
 };
 
