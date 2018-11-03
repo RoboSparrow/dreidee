@@ -1,9 +1,8 @@
 {
   "name": "dreidee",
-  "description": "shitty 3d render experiments",
+  "description": "",
   "license": "MIT",
   "version": "0.0.1",
-  "description": "",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",

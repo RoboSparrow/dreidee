@@ -25,7 +25,7 @@ const points = [
     /*7*/ [-50, 50, 50],
 ];
 
-const triangles = [
+const vertices = [
     0, 1, 2,
     2, 3, 0,
     4, 5, 6,
@@ -40,19 +40,19 @@ const triangles = [
     0, 7, 4
 ];
 
-const getTriangles = function() {
+const getVertices = function() {
     const r = [];
-    const { length } = triangles;
+    const { length } = vertices;
     let i;
 
     for (i = 0; i < length; i += 3) {
         r.push([
-            points[triangles[i]],
-            points[triangles[i + 1]],
-            points[triangles[i + 2]],
+            points[vertices[i]],
+            points[vertices[i + 1]],
+            points[vertices[i + 2]],
         ]);
     }
     return r;
 };
 
-export default getTriangles;
+export default getVertices;
