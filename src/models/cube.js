@@ -25,7 +25,7 @@ const points = [
     /*7*/ [-50, 50, 50],
 ];
 
-const vertices = [
+const polygons = [
     [0, 1, 2],
     [2, 3, 0],
     [4, 5, 6],
@@ -40,9 +40,16 @@ const vertices = [
     [0, 7, 4],
 ];
 
-const getVertices = function() {
-    const r = vertices.map(v => v.map(i => points[i]));
+const getPolygons = function() {
+    const r = polygons.map(v => v.map(i => points[i]));
     return r;
 };
 
-export default getVertices;
+const objectDefaults = function() {
+    return {};
+};
+
+export default {
+    polygons: getPolygons,
+    defaults: objectDefaults,
+};

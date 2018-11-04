@@ -2,7 +2,7 @@
  * Shitty main functions
  */
 
-import getTriangles from './models/cube';
+import O from './models/humanoid';
 import M, { idendityMatrix } from './matrix';
 import R from './renderer';
 
@@ -52,7 +52,7 @@ const drawLine = function(ctx, points, center, color, txt = '') {
 };
 
 const defaults = function() {
-    return {
+    return Object.assign({
         test: 1,
         translate: M.p3(),
         rotate: M.p3(),
@@ -63,12 +63,12 @@ const defaults = function() {
             y: true,
             z: false,
         }
-    };
+    }, O.defaults() || {});
 };
 
 const State = defaults();
 
-const triangles = getTriangles();
+const polygons = O.polygons();
 
 const mw = idendityMatrix();
 
@@ -113,7 +113,7 @@ const update = function(ctx) {
 
     //// project and draw
 
-    const paths = triangles.map(path => path.map(point => R.project(point, cameraFrom, m)));
+    const paths = polygons.map(path => path.map(point => R.project(point, cameraFrom, m)));
     paths.map(path => draw(ctx, path, origin));
 
     const projectedCoordsX = [[0, 0, 0], [50, 0, 0]].map(point => R.project(point, cameraFrom, mw));
