@@ -29,11 +29,38 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/alfa147.obj',
-        name: 'Mini-Cooper',
+        url: '../static/magnolia.obj',
+        name: 'Magnolia blossom',
         source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
         defaults: function() {
             return {};
+        },
+    }, {
+        url: '../static/shuttle.obj',
+        name: 'Space Shuttle',
+        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        defaults: function() {
+            return {
+                scale: M.p3(20, 20, 20),
+            };
+        },
+    }, {
+        url: '../static/skyscraper.obj',
+        name: 'Skyscraper',
+        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        defaults: function() {
+            return {
+                scale: M.p3(3.5, 3.5, 3.5),
+            };
+        },
+    }, {
+        url: '../static/violin_case.obj',
+        name: 'Violin case',
+        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        defaults: function() {
+            return {
+                scale: M.p3(80, 80, 80),
+            };
         },
     }, {
         url: '../static/cessna.obj',
@@ -63,6 +90,24 @@ const Models = Object.freeze([
             };
         },
     }, {
+        url: '../static/sandal.obj',
+        name: 'Sandal',
+        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        defaults: function() {
+            return {
+                scale: M.p3(30, 30, 30),
+            };
+        },
+    }, {
+        url: '../static/airboat.obj',
+        name: 'Airboat',
+        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        defaults: function() {
+            return {
+                scale: M.p3(20, 20, 20),
+            };
+        },
+    }, {
         url: '../static/power_lines.obj',
         name: 'Power lines',
         source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
@@ -71,7 +116,7 @@ const Models = Object.freeze([
                 scale: M.p3(2, 2, 2),
             };
         },
-    }
+    },
 ]);
 
 export default Models;

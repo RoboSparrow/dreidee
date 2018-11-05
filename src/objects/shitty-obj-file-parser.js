@@ -1,5 +1,6 @@
 /**
  * @see https://www.cs.cmu.edu/~mbz/personal/graphics/obj.html
+ * @see http://paulbourke.net/dataformats/obj/
  */
 
 ////
