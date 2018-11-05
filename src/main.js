@@ -2,9 +2,11 @@
  * Shitty main functions
  */
 
-import O from './models/humanoid';
 import M, { idendityMatrix } from './matrix';
 import R from './renderer';
+
+import models from './objects/models';
+import ShittyParser from './objects/shitty-obj-file-parser';
 
 const draw = function(ctx, points, center) {
     ctx.save();
@@ -51,28 +53,71 @@ const drawLine = function(ctx, points, center, color, txt = '') {
     ctx.restore();
 };
 
-const defaults = function() {
+const defaults = function(model) {
+
     return Object.assign({
-        test: 1,
+        name: (model) ? model.name : '',
+        source: (model) ? model.source : '',
+        url: (model) ? model.url : '',
+
         translate: M.p3(),
         rotate: M.p3(),
         cameraFrom: M.p3(0, 0, 1000),
-        scale: M.p3(1, 2, 1),
+        scale: M.p3(1, 1, 1),
         autorotate: {
             x: true,
             y: true,
             z: false,
         }
-    }, O.defaults() || {});
+    }, (model) ? model.defaults() : {});
 };
 
+let Model;
+let Obj = null;
 const State = defaults();
+let polygons = [];
 
-const polygons = O.polygons();
+//// state managment
+const updateEvent = new Event('state:updated');
+
+const getState = function() {
+    return Object.assign({}, State);
+};
+
+const setState = function(updates) {
+    Object.assign(State, updates);
+    document.dispatchEvent(updateEvent);
+};
+
+const resetState = function() {
+    Object.assign(State, defaults(Model));
+    document.dispatchEvent(updateEvent);
+};
+
+const setObject = function(model) {
+    ShittyParser.parseFromUrl(model.url)
+        .then((obj) => {
+            Obj = obj;
+            Model = model;
+            setState(defaults(model));
+            polygons = Obj.polygons();
+            return true;
+        })
+        .catch((err) => {
+            // eslint-disable-next-line no-console
+            console.log(err);
+            return err;
+        });
+};
 
 const mw = idendityMatrix();
 
 const update = function(ctx) {
+
+    if (!Obj) {
+        window.requestAnimationFrame(update.bind(null, ctx));
+        return;
+    }
 
     ctx.clearRect(0, 0, 400, 300);
 
@@ -143,7 +188,8 @@ const init = function(canvas) {
     canvas.style.border = '1px solid black';
 
     // start
+    setObject(models[0]);
     update(ctx);
 };
 
-export { State, defaults, init };
+export { getState, setState, resetState, init, setObject };
