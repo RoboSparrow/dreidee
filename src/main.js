@@ -1,6 +1,7 @@
 /**
  * Shitty main functions
  */
+import Stats from 'stats.js';
 
 import M, { idendityMatrix } from './matrix';
 import R from './renderer';
@@ -76,6 +77,7 @@ let Model;
 let Obj = null;
 const State = defaults();
 let polygons = [];
+const stats = new Stats();
 
 //// state managment
 const updateEvent = new Event('state:updated');
@@ -113,6 +115,7 @@ const setObject = function(model) {
 const mw = idendityMatrix();
 
 const update = function(ctx) {
+    stats.begin();
 
     if (!Obj) {
         window.requestAnimationFrame(update.bind(null, ctx));
@@ -178,6 +181,7 @@ const update = function(ctx) {
     ctx.fillText(`rotate ${rotate.toString()}`, 10, ctx.canvas.height - 40);
 
     //// recurse
+    stats.end();
     window.requestAnimationFrame(update.bind(null, ctx));
 };
 
@@ -186,6 +190,9 @@ const init = function(canvas) {
     canvas.width = 400;
     canvas.height = 300;
     canvas.style.border = '1px solid black';
+
+    stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+    document.body.appendChild(stats.dom);
 
     // start
     setObject(models[0]);
