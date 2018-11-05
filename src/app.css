@@ -7,3 +7,13 @@
     border: 1px solid grey;
     background-color: #eeeeee;
 }
+
+nav.model {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.model-button {
+    margin: .25em;
+}
+
