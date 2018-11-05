@@ -1,3 +1,9 @@
 .xsmall{
     font-size: 70%;
 }
+
+.obj-file {
+    padding: 1em;
+    border: 1px solid grey;
+    background-color: #eeeeee;
+}

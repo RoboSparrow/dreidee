@@ -80,6 +80,7 @@ let polygons = [];
 const stats = new Stats();
 
 //// state managment
+
 const updateEvent = new Event('state:updated');
 
 const getState = function() {
@@ -96,6 +97,8 @@ const resetState = function() {
     document.dispatchEvent(updateEvent);
 };
 
+//// object managment
+
 const setObject = function(model) {
     ShittyParser.parseFromUrl(model.url)
         .then((obj) => {
@@ -111,6 +114,12 @@ const setObject = function(model) {
             return err;
         });
 };
+
+const getObjContents = function() {
+    return (Obj) ? Obj.contents : '';
+};
+
+//// update
 
 const mw = idendityMatrix();
 
@@ -199,4 +208,4 @@ const init = function(canvas) {
     update(ctx);
 };
 
-export { getState, setState, resetState, init, setObject };
+export { getState, setState, resetState, setObject, getObjContents, init };

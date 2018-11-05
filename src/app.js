@@ -2,7 +2,7 @@
  * Shitty Mithril components
  */
 import m from 'mithril';
-import { getState, setState, resetState, setObject } from './main';
+import { getState, setState, resetState, setObject, getObjContents } from './main';
 import models from './objects/models';
 
 let State = {};
@@ -159,7 +159,7 @@ const Reset = {
     },
 };
 
-const SelectModel = {
+const Models = {
     view: function() {
         return [
             m('nav.pure-button-group.xsmall', models.map((model) => {
@@ -176,6 +176,14 @@ const SelectModel = {
     },
 };
 
+const ObjFile = {
+    view: function() {
+        return [
+            m('pre.obj-file', getObjContents()),
+        ];
+    },
+};
+
 const App = {
     oninit: function() {
         State = getState();
@@ -183,13 +191,14 @@ const App = {
 
     view: function() {
         return [
-            m(SelectModel),
+            m(Models),
             m('.pure-form.app--controls.xsmall', [
                 m(Translate),
                 m(Rotate),
                 m(Scale),
                 m(AutoRotate),
                 m(Reset),
+                m(ObjFile),
                 m('pre', JSON.stringify(State, null, 4)),
             ]),
         ];

@@ -174,6 +174,7 @@ const parse = function(txt) {
         }
 
         resolve({
+            contents: txt,
             polygons: function() {
                 return mapPolygons(points, polygons);
             },
