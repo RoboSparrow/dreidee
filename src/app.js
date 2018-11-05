@@ -2,7 +2,7 @@
  * Shitty Mithril components
  */
 import m from 'mithril';
-import { getState, setState, resetState, setObject, getObjContents } from './main';
+import { init, getState, setState, resetState, setObject, getObjContents } from './main';
 import models from './objects/models';
 
 let State = {};
@@ -15,7 +15,7 @@ document.addEventListener('state:updated', () => {
 const Translate = {
     view: function() {
         return [
-            m('', [
+            m('p', [
                 m('input[type=number]', {
                     value: State.translate[0],
                     onchange: (e) => {
@@ -51,7 +51,7 @@ const Translate = {
 const Rotate = {
     view: function() {
         return [
-            m('', [
+            m('p', [
                 m('input[type=number]', {
                     value: State.rotate[0],
                     onchange: (e) => {
@@ -87,7 +87,7 @@ const Rotate = {
 const Scale = {
     view: function() {
         return [
-            m('', [
+            m('p', [
                 m('input[type=number]', {
                     value: State.scale[0],
                     onchange: (e) => {
@@ -123,7 +123,7 @@ const Scale = {
 const AutoRotate = {
     view: function() {
         return [
-            m('', [
+            m('p', [
                 m('input[type=checkbox]', {
                     checked: State.autorotate.x,
                     onchange: (e) => { State.autorotate.x = e.target.checked; },
@@ -162,9 +162,9 @@ const Reset = {
 const Models = {
     view: function() {
         return [
-            m('nav.pure-button-group.xsmall', models.map((model) => {
-                const className = (State.name === model.name) ? 'pure-button pure-button-primary' : 'pure-button';
-                return m('a', {
+            m('nav.model', models.map((model) => {
+                const className = (State.name === model.name) ? ' pure-button-primary' : '';
+                return m('a.model-button.pure-button', {
                     className,
                     onclick: (e) => {
                         e.preventDefault();
@@ -172,6 +172,21 @@ const Models = {
                     },
                 }, model.name);
             })),
+        ];
+    },
+};
+
+const About = {
+    view: function() {
+        const { name, source } = getState();
+        return [
+            m('h3', name),
+            m('span', 'courtesy: '),
+            m('a', {
+                href: source,
+                target: '_blank',
+            }, source),
+
         ];
     },
 };
@@ -189,17 +204,30 @@ const App = {
         State = getState();
     },
 
+    oncreate: function() {
+        init(document.getElementById('dreidee').appendChild(document.createElement('canvas')));
+    },
+
     view: function() {
         return [
-            m(Models),
-            m('.pure-form.app--controls.xsmall', [
-                m(Translate),
-                m(Rotate),
-                m(Scale),
-                m(AutoRotate),
-                m(Reset),
-                m(ObjFile),
-                m('pre', JSON.stringify(State, null, 4)),
+            m('main.pure-g', [
+                m('#dreidee.pure-u-1-2'),
+                m('.pure-u-1-2.pure-form.app--controls.xsmall', [
+                    m(Models),
+                    m(About),
+                    m(Translate),
+                    m(Rotate),
+                    m(Scale),
+                    m(AutoRotate),
+                    m(Reset),
+                ]),
+                m('.pure-u-1-2.xsmall', [
+                    m(ObjFile),
+                ]),
+                m('.pure-u-1-2.xsmall', [
+                    m('pre.pure-u-1-2', JSON.stringify(State, null, 4)),
+                ]),
+
             ]),
         ];
     },
