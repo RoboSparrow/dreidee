@@ -26,6 +26,7 @@ const Models = Object.freeze([
         defaults: function() {
             return {
                 scale: M.p3(40, 40, 40),
+                withPoints: false,
             };
         },
     }, {
@@ -33,7 +34,10 @@ const Models = Object.freeze([
         name: 'Magnolia blossom',
         source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
         defaults: function() {
-            return {};
+            return {
+                withPoints: false,
+                withFill: true,
+            };
         },
     }, {
         url: '../static/shuttle.obj',
@@ -51,6 +55,8 @@ const Models = Object.freeze([
         defaults: function() {
             return {
                 scale: M.p3(3.5, 3.5, 3.5),
+                withPoints: false,
+                withFill: true,
             };
         },
     }, {
@@ -69,6 +75,7 @@ const Models = Object.freeze([
         defaults: function() {
             return {
                 scale: M.p3(10, 10, 10),
+                withPoints: false,
             };
         },
     }, {
@@ -78,6 +85,7 @@ const Models = Object.freeze([
         defaults: function() {
             return {
                 scale: M.p3(15, 15, 15),
+                withPoints: false,
             };
         },
     }, {
@@ -105,6 +113,8 @@ const Models = Object.freeze([
         defaults: function() {
             return {
                 scale: M.p3(20, 20, 20),
+                withPoints: false,
+                withFill: true,
             };
         },
     }, {
@@ -114,7 +124,31 @@ const Models = Object.freeze([
         defaults: function() {
             return {
                 scale: M.p3(2, 2, 2),
+                rotate: M.p3(0, 0, Math.PI),
+                withPoints: false,
+                autorotate: {
+                    x: true,
+                    y: 0,
+                    z: 0,
+                },
             };
+        },
+    }, {
+        url: '../static/Bennu-Radar.obj',
+        name: '101955 Bennu asteroid',
+        source: 'https://nasa3d.arc.nasa.gov/detail/bennu',
+        defaults: function() {
+            return {
+                scale: M.p3(200, 200, 200),
+                withPoints: false,
+            };
+        },
+    }, {
+        url: '../static/voyager_carbajal.obj',
+        name: 'Voyager Probe',
+        source: 'https://nasa3d.arc.nasa.gov/detail/iss-c2',
+        defaults: function() {
+            return {};
         },
     },
 ]);
