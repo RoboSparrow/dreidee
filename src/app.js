@@ -263,6 +263,10 @@ const App = {
     view: function() {
         return [
             m('main.pure-g', [
+
+                m('.pure-u-1-2.intro', ''),
+                m('.pure-u-1-2.intro', 'A shitty 3 renderer, written from scratch.'),
+
                 m('#dreidee.pure-u-1-2'),
                 m('.pure-u-1-2.pure-form.app--controls.xsmall', [
                     m(Models),
@@ -274,6 +278,7 @@ const App = {
                     m(Draw),
                     m(Reset),
                 ]),
+
                 m('.pure-u-1-2.xsmall', [
                     m(ObjFile),
                 ]),
