@@ -143,13 +143,6 @@ const Models = Object.freeze([
                 withPoints: false,
             };
         },
-    }, {
-        url: '../static/voyager_carbajal.obj',
-        name: 'Voyager Probe',
-        source: 'https://nasa3d.arc.nasa.gov/detail/iss-c2',
-        defaults: function() {
-            return {};
-        },
     },
 ]);
 
