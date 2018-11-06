@@ -214,7 +214,7 @@ const update = function(ctx) {
     ctx.fillText(`camera ${cameraFrom.toString()}`, 10, ctx.canvas.height - 10);
     ctx.fillText(`rotate ${rotate.toString()}`, 10, ctx.canvas.height - 20);
     ctx.fillText(`translate ${translate.toString()}`, 10, ctx.canvas.height - 30);
-    ctx.fillText(`rotate ${rotate.toString()}`, 10, ctx.canvas.height - 40);
+    ctx.fillText(`scale ${scale.toString()}`, 10, ctx.canvas.height - 40);
 
     //// recurse
     stats.end();

@@ -2,11 +2,22 @@
     font-size: 70%;
 }
 
+/* data displays */
+
 .obj-file {
+    margin: 0.5em;
     padding: 1em;
     border: 1px solid grey;
     background-color: #eeeeee;
 }
+.pretty-json {
+    margin: 0.5em;
+    padding: 1em;
+    color: grey;
+    border: 1px solid grey;
+}
+
+/* nav */
 
 nav.model {
     margin-top: .5em;

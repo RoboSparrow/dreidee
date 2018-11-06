@@ -235,6 +235,22 @@ const ObjFile = {
     },
 };
 
+const PrettyPrint = {
+    view: function(vnode) {
+        let str;
+        const { data } = vnode.attrs;
+        try {
+            str = JSON.stringify(data, null, 4);
+        } catch (e) {
+            str = e.toString();
+        }
+
+        return [
+            m('pre.pretty-json', str),
+        ];
+    },
+};
+
 const App = {
     oninit: function() {
         State = getState();
@@ -262,7 +278,7 @@ const App = {
                     m(ObjFile),
                 ]),
                 m('.pure-u-1-2.xsmall', [
-                    m('pre.pure-u-1-2', JSON.stringify(State, null, 4)),
+                    m(PrettyPrint, { data: State }),
                 ]),
 
             ]),
