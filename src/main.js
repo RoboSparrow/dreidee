@@ -9,8 +9,12 @@ import R from './renderer';
 import models from './objects/models';
 import ShittyParser from './objects/shitty-obj-file-parser';
 
-const draw = function(ctx, points, center) {
+const draw = function(ctx, points, center, state) {
+    const { lineWidth, fillStyle, withLines, withPoints, withFill } = state;
     ctx.save();
+    ctx.lineWidth = lineWidth;
+    ctx.fillStyle = fillStyle;// todo above can be applied in main above loop
+
     ctx.beginPath();
     points.forEach((point, index) => {
         const x = point[0] + center[0];
@@ -19,14 +23,21 @@ const draw = function(ctx, points, center) {
             ctx.moveTo(x, y);
         }
         ctx.lineTo(x, y);
-        ctx.fillStyle = 'red';
-        ctx.restore();
-        ctx.fillRect(x - 2.5, y - 2.5, 5, 5);
+        if (withPoints) { //todo function
+            ctx.save();
+            ctx.fillStyle = 'red';
+            ctx.fillRect(x - 1, y - 1, 2, 2);
+            ctx.restore();
+        }
     });
-
     ctx.closePath();
-    ctx.stroke();
-    // ctx.fill();
+
+    if (withLines) { //todo function
+        ctx.stroke();
+    }
+    if (withFill) { //todo function
+        ctx.fill();
+    }
     ctx.restore();
 };
 
@@ -56,21 +67,36 @@ const drawLine = function(ctx, points, center, color, txt = '') {
 
 const defaults = function(model) {
 
+    // defaults
     return Object.assign({
+        // info
         name: (model) ? model.name : '',
         source: (model) ? model.source : '',
         url: (model) ? model.url : '',
 
+        // geometry
         translate: M.p3(),
         rotate: M.p3(),
         cameraFrom: M.p3(0, 0, 1000),
         scale: M.p3(1, 1, 1),
+
+        //animation
         autorotate: {
             x: true,
             y: true,
             z: false,
-        }
+        },
+
+        // drawing
+        withPoints: true,
+        withLines: true,
+        withFill: false,
+        lineWidth: 0.2,
+        strokeStyle: 'black',
+        fillStyle: 'grey',
+
     }, (model) ? model.defaults() : {});
+
 };
 
 let Model;
@@ -142,6 +168,7 @@ const update = function(ctx) {
     const ang = delta / 500;
 
     const { cameraFrom, rotate, translate, scale, autorotate } = State;
+    const safeState = getState();
 
     //// state managment
 
@@ -171,7 +198,7 @@ const update = function(ctx) {
     //// project and draw
 
     const paths = polygons.map(path => path.map(point => R.project(point, cameraFrom, m)));
-    paths.map(path => draw(ctx, path, origin));
+    paths.map(path => draw(ctx, path, origin, safeState));
 
     const projectedCoordsX = [[0, 0, 0], [50, 0, 0]].map(point => R.project(point, cameraFrom, mw));
     drawLine(ctx, projectedCoordsX, origin, 'red', 'X');
