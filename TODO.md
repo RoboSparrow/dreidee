@@ -1,3 +1,5 @@
-- name, link display
+- ~~name, link display~~
 - error display
-- drawing options for points, lines, shapes
+- ~~drawing options for points, lines, shapes~~
+- optimizations
+- pixel projection for hig densidty models
