@@ -126,19 +126,55 @@ const AutoRotate = {
             m('p', [
                 m('input[type=checkbox]', {
                     checked: State.autorotate.x,
-                    onchange: (e) => { State.autorotate.x = e.target.checked; },
+                    onchange: (e) => {
+                        const { autorotate } = State;
+                        autorotate.x = e.target.checked;
+                        setState({ autorotate });
+                    },
                 }),
                 m('label', 'auto rotateX'),
                 m('input[type=checkbox]', {
                     checked: State.autorotate.y,
-                    onchange: (e) => { State.autorotate.y = e.target.checked; },
+                    onchange: (e) => {
+                        const { autorotate } = State;
+                        autorotate.y = e.target.checked;
+                        setState({ autorotate });
+                    },
                 }),
                 m('label', 'auto rotateY'),
                 m('input[type=checkbox]', {
                     checked: State.autorotate.z,
-                    onchange: (e) => { State.autorotate.z = e.target.checked; },
+                    onchange: (e) => {
+                        const { autorotate } = State;
+                        autorotate.z = e.target.checked;
+                        setState({ autorotate });
+                    },
                 }),
                 m('label', 'auto rotateZ'),
+            ]),
+        ];
+    },
+};
+
+const Draw = {
+    view: function() {
+        return [
+            m('p', [
+                m('input[type=checkbox]', {
+                    checked: State.withPoints,
+                    onchange: e => setState({ withPoints: e.target.checked }),
+                }),
+                m('label', 'points'),
+                m('input[type=checkbox]', {
+                    checked: State.withLines,
+                    onchange: e => setState({ withLines: e.target.checked }),
+                }),
+                m('label', 'lines'),
+                m('input[type=checkbox]', {
+                    checked: State.withFill,
+                    onchange: e => setState({ withFill: e.target.checked }),
+                }),
+                m('label', 'fill'),
             ]),
         ];
     },
@@ -219,6 +255,7 @@ const App = {
                     m(Rotate),
                     m(Scale),
                     m(AutoRotate),
+                    m(Draw),
                     m(Reset),
                 ]),
                 m('.pure-u-1-2.xsmall', [
