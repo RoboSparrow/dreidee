@@ -158,23 +158,54 @@ const AutoRotate = {
 
 const Draw = {
     view: function() {
+
+        const disabled = (State.drawingStyle !== 'geometry');
+
         return [
             m('p', [
                 m('input[type=checkbox]', {
                     checked: State.withPoints,
+                    disabled,
                     onchange: e => setState({ withPoints: e.target.checked }),
                 }),
                 m('label', 'points'),
                 m('input[type=checkbox]', {
                     checked: State.withLines,
+                    disabled,
                     onchange: e => setState({ withLines: e.target.checked }),
                 }),
                 m('label', 'lines'),
                 m('input[type=checkbox]', {
                     checked: State.withFill,
+                    disabled,
                     onchange: e => setState({ withFill: e.target.checked }),
                 }),
                 m('label', 'fill'),
+            ]),
+        ];
+    },
+};
+
+const Style = {
+    view: function() {
+        const { drawingStyle } = State;
+
+        return [
+            m('', [
+                m('a.model-button.pure-button', {
+                    className: (drawingStyle === 'geometry') ? 'pure-button-primary' : '',
+                    onclick: (e) => {
+                        e.preventDefault();
+                        setState({ drawingStyle: 'geometry' });
+                    }
+                }, 'Draw Geometry'),
+                m('a.model-button.pure-button', {
+                    className: (drawingStyle === 'pixels') ? 'pure-button-primary' : '',
+                    onclick: (e) => {
+                        e.preventDefault();
+                        setState({ drawingStyle: 'pixels' });
+                    }
+                }, 'Draw Pixels'),
             ]),
         ];
     },
@@ -275,6 +306,7 @@ const App = {
                     m(Rotate),
                     m(Scale),
                     m(AutoRotate),
+                    m(Style),
                     m(Draw),
                     m(Reset),
                 ]),
