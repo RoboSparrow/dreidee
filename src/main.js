@@ -9,35 +9,80 @@ import R from './renderer';
 import models from './objects/models';
 import ShittyParser from './objects/shitty-obj-file-parser';
 
-const draw = function(ctx, points, center, state) {
+const locatePixel2D = function(x, y, width) {
+    return y * (width * 4) + x * 4;
+};
+
+const drawImageData = function(ctx, paths, center) {
+    const { width, height } = ctx.canvas;
+
+    ctx.fillRect(0, 0, width, height);
+    const imageData = ctx.getImageData(0, 0, width, height);
+
+    let red;
+    let i;
+    let k;
+    let point;
+    const lpaths = paths.length;
+    let lpoints;
+
+    for (i = 0; i < lpaths; i += 1) {
+        lpoints = paths[i].length;
+        for (k = 0; k < lpoints; k += 1) {
+            point = paths[i][k];
+            const x = Math.floor(point[0] + center[0]);
+            const y = Math.floor(point[1] + center[1]);
+
+            red = locatePixel2D(x, y, width);
+            imageData.data[red] = 255;
+            imageData.data[red + 1] = 255;
+            imageData.data[red + 2] = 255;
+        }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+};
+
+const draw = function(ctx, paths, center, state) {
     const { lineWidth, fillStyle, withLines, withPoints, withFill } = state;
     ctx.save();
     ctx.lineWidth = lineWidth;
     ctx.fillStyle = fillStyle;// todo above can be applied in main above loop
 
-    ctx.beginPath();
-    points.forEach((point, index) => {
-        const x = point[0] + center[0];
-        const y = point[1] + center[1];
-        if (index === 0) {
-            ctx.moveTo(x, y);
-        }
-        ctx.lineTo(x, y);
-        if (withPoints) { //todo function
-            ctx.save();
-            ctx.fillStyle = 'red';
-            ctx.fillRect(x - 1, y - 1, 2, 2);
-            ctx.restore();
-        }
-    });
-    ctx.closePath();
+    let i;
+    let k;
+    let point;
+    const lpaths = paths.length;
+    let lpoints;
 
-    if (withLines) { //todo function
-        ctx.stroke();
+    for (i = 0; i < lpaths; i += 1) {
+        lpoints = paths[i].length;
+        ctx.beginPath();
+        for (k = 0; k < lpoints; k += 1) {
+            point = paths[i][k];
+            const x = point[0] + center[0];
+            const y = point[1] + center[1];
+            if (k === 0) {
+                ctx.moveTo(x, y);
+            }
+            ctx.lineTo(x, y);
+            if (withPoints) { //todo function
+                ctx.save();
+                ctx.fillStyle = 'red';
+                ctx.fillRect(x - 1, y - 1, 2, 2);
+                ctx.restore();
+            }
+        }
+        ctx.closePath();
+
+        if (withLines) { //todo function
+            ctx.stroke();
+        }
+        if (withFill) { //todo function
+            ctx.fill();
+        }
     }
-    if (withFill) { //todo function
-        ctx.fill();
-    }
+
     ctx.restore();
 };
 
@@ -94,6 +139,9 @@ const defaults = function(model) {
         lineWidth: 0.2,
         strokeStyle: 'black',
         fillStyle: 'grey',
+
+        // drawing style
+        drawingStyle: 'geometry',
 
     }, (model) ? model.defaults() : {});
 
@@ -167,7 +215,7 @@ const update = function(ctx) {
     const delta = performance.now();
     const ang = delta / 500;
 
-    const { cameraFrom, rotate, translate, scale, autorotate } = State;
+    const { cameraFrom, rotate, translate, scale, autorotate, drawingStyle } = State;
     const safeState = getState();
 
     //// state managment
@@ -198,7 +246,12 @@ const update = function(ctx) {
     //// project and draw
 
     const paths = polygons.map(path => path.map(point => R.project(point, cameraFrom, m)));
-    paths.map(path => draw(ctx, path, origin, safeState));
+
+    if (drawingStyle === 'pixels') {
+        drawImageData(ctx, paths, origin, safeState);
+    } else {
+        draw(ctx, paths, origin, safeState);
+    }
 
     const projectedCoordsX = [[0, 0, 0], [50, 0, 0]].map(point => R.project(point, cameraFrom, mw));
     drawLine(ctx, projectedCoordsX, origin, 'red', 'X');
