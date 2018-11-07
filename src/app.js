@@ -15,7 +15,7 @@ document.addEventListener('state:updated', () => {
 const Translate = {
     view: function() {
         return [
-            m('p', [
+            m('.section', [
                 m('input[type=number]', {
                     value: State.translate[0],
                     onchange: (e) => {
@@ -51,7 +51,7 @@ const Translate = {
 const Rotate = {
     view: function() {
         return [
-            m('p', [
+            m('.section', [
                 m('input[type=number]', {
                     value: State.rotate[0],
                     onchange: (e) => {
@@ -87,7 +87,7 @@ const Rotate = {
 const Scale = {
     view: function() {
         return [
-            m('p', [
+            m('.section', [
                 m('input[type=number]', {
                     value: State.scale[0],
                     onchange: (e) => {
@@ -123,7 +123,7 @@ const Scale = {
 const AutoRotate = {
     view: function() {
         return [
-            m('p', [
+            m('.section', [
                 m('input[type=checkbox]', {
                     checked: State.autorotate.x,
                     onchange: (e) => {
@@ -162,7 +162,7 @@ const Draw = {
         const disabled = (State.drawingStyle !== 'geometry');
 
         return [
-            m('p', [
+            m('.section', [
                 m('input[type=checkbox]', {
                     checked: State.withPoints,
                     disabled,
@@ -186,20 +186,44 @@ const Draw = {
     },
 };
 
+const Helpers = {
+    view: function() {
+
+        const disabled = (State.drawingStyle !== 'geometry');
+
+        return [
+            m('.section', [
+                m('input[type=checkbox]', {
+                    checked: State.withAxes,
+                    disabled,
+                    onchange: e => setState({ withAxes: e.target.checked }),
+                }),
+                m('label', 'world coordinates'),
+                m('input[type=checkbox]', {
+                    checked: State.withObjectInfo,
+                    disabled,
+                    onchange: e => setState({ withObjectInfo: e.target.checked }),
+                }),
+                m('label', 'object info'),
+            ]),
+        ];
+    },
+};
+
 const Style = {
     view: function() {
         const { drawingStyle } = State;
 
         return [
-            m('', [
-                m('a.model-button.pure-button', {
+            m('.section', [
+                m('a.pure-button', {
                     className: (drawingStyle === 'geometry') ? 'pure-button-primary' : '',
                     onclick: (e) => {
                         e.preventDefault();
                         setState({ drawingStyle: 'geometry' });
                     }
                 }, 'Draw Geometry'),
-                m('a.model-button.pure-button', {
+                m('a.pure-button', {
                     className: (drawingStyle === 'pixels') ? 'pure-button-primary' : '',
                     onclick: (e) => {
                         e.preventDefault();
@@ -214,7 +238,7 @@ const Style = {
 const Reset = {
     view: function() {
         return [
-            m('', [
+            m('.section', [
                 m('button', {
                     onclick: (e) => {
                         e.preventDefault();
@@ -245,15 +269,13 @@ const Models = {
 
 const About = {
     view: function() {
-        const { name, source } = getState();
+        const { name, info, polygons, points } = getState();
         return [
-            m('h3', name),
-            m('span', 'courtesy: '),
-            m('a', {
-                href: source,
-                target: '_blank',
-            }, source),
-
+            m('.section', [
+                m('h3', name),
+                m('', `${points} points, ${polygons} polygons`),
+                m('', m.trust(info)),
+            ]),
         ];
     },
 };
@@ -308,6 +330,7 @@ const App = {
                     m(AutoRotate),
                     m(Style),
                     m(Draw),
+                    m(Helpers),
                     m(Reset),
                 ]),
 
