@@ -12,3 +12,5 @@ Don't use it. Consider [glmatix](http://glmatrix.net/), [twgl](http://twgljs.org
 * [Matrices and Quaternions FAQ ](http://www.opengl-tutorial.org/assets/faq_quaternions/index.html)
 * Dmitry V. Sokolov's [tinyrenderer tutorial](https://github.com/ssloy/tinyrenderer/wiki/Lesson-4:-Perspective-projection)
 * [OpenGL tutorial](http://www.opengl-tutorial.org/)
+
+Frontend built with [mithril.js](https://mithril.js.org/) and [pure.css](https://purecss.io/)
