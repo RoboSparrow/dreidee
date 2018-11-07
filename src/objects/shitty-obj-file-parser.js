@@ -176,12 +176,13 @@ const parse = function(txt) {
 
         resolve({
             contents: txt,
+            stats: {
+                polygons: polygons.length,
+                points: points.length,
+            },
             polygons: function() {
                 return mapPolygons(points, polygons);
             },
-            defaults: function() { //TODO remove
-                return {};
-            }
         });
     });
 

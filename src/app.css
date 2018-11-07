@@ -7,6 +7,15 @@
     margin-bottom: 1em;
 }
 
+.section {
+    margin-bottom: 1em;
+}
+
+.section label,
+.section .pure-button{
+    margin-right: 1em;
+}
+
 /* data displays */
 
 .obj-file {
