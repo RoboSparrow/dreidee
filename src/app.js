@@ -318,7 +318,7 @@ const App = {
             m('main.pure-g', [
 
                 m('.pure-u-1-2.intro', ''),
-                m('.pure-u-1-2.intro', 'A shitty 3 renderer, written from scratch.'),
+                m('.pure-u-1-2.intro', 'A shitty 3 renderer for canvas 2D.'),
 
                 m('#dreidee.pure-u-1-2'),
                 m('.pure-u-1-2.pure-form.app--controls.xsmall', [
