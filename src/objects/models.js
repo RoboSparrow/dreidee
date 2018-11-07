@@ -4,7 +4,7 @@ const Models = Object.freeze([
     {
         url: '../static/humanoid_tri.obj',
         name: 'Humanoid shape',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(10, 10, 10),
@@ -13,7 +13,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/cube.obj',
         name: 'Cube',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(40, 40, 40),
@@ -22,7 +22,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/al.obj',
         name: 'Al, a cartoonish mobster',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(40, 40, 40),
@@ -32,7 +32,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/magnolia.obj',
         name: 'Magnolia blossom',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 withPoints: false,
@@ -42,7 +42,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/shuttle.obj',
         name: 'Space Shuttle',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(20, 20, 20),
@@ -51,7 +51,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/skyscraper.obj',
         name: 'Skyscraper',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(3.5, 3.5, 3.5),
@@ -62,7 +62,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/violin_case.obj',
         name: 'Violin case',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(80, 80, 80),
@@ -71,7 +71,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/cessna.obj',
         name: 'Cessna airplane',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(10, 10, 10),
@@ -81,7 +81,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/lamp.obj',
         name: 'Lamp',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(15, 15, 15),
@@ -91,7 +91,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/octahedron.obj',
         name: 'Dodecahedron',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(50, 50, 50),
@@ -100,7 +100,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/sandal.obj',
         name: 'Sandal',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(30, 30, 30),
@@ -109,7 +109,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/airboat.obj',
         name: 'Airboat',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(20, 20, 20),
@@ -120,7 +120,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/power_lines.obj',
         name: 'Power lines',
-        source: 'https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html',
+        info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
                 scale: M.p3(2, 2, 2),
@@ -136,7 +136,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/Bennu-Radar.obj',
         name: '101955 Bennu asteroid',
-        source: 'https://nasa3d.arc.nasa.gov/detail/bennu',
+        info: 'Authors: Michael C. Nolan/Arecibo Observatory/NASA/NSF,<br>courtesy <a href="https://nasa3d.arc.nasa.gov/detail/bennu" target="_blank">NASA 3D Resources</a>',
         defaults: function() {
             return {
                 scale: M.p3(200, 200, 200),
@@ -146,7 +146,7 @@ const Models = Object.freeze([
     }, {
         url: '../static/nefertiti.obj',
         name: 'Nefertiti Hack Reduced',
-        source: 'https://nasa3d.arc.nasa.gov/detail/bennu',
+        info: 'courtesy <a href="http://nefertitihack.alloversky.com/" target="_blank">Nora Al-Badri and Jan Nikolai Nelles<a/>, decimated model by <a href="https://sketchfab.com/zafio" target="_blank">Zafio</a>',
         defaults: function() {
             return {
                 scale: M.p3(0.7, 0.7, 0.7),

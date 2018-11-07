@@ -16,7 +16,7 @@ const defaults = function(model) {
     return Object.assign({
         // info
         name: (model) ? model.name : '',
-        source: (model) ? model.source : '',
+        info: (model) ? model.info : '',
         url: (model) ? model.url : '',
 
         //object stats
