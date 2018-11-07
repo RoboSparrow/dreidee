@@ -128,8 +128,8 @@ const Models = Object.freeze([
                 withPoints: false,
                 autorotate: {
                     x: true,
-                    y: 0,
-                    z: 0,
+                    y: false,
+                    z: false,
                 },
             };
         },
@@ -141,6 +141,22 @@ const Models = Object.freeze([
             return {
                 scale: M.p3(200, 200, 200),
                 withPoints: false,
+            };
+        },
+    }, {
+        url: '../static/nefertiti.obj',
+        name: 'Nefertiti Hack Reduced',
+        source: 'https://nasa3d.arc.nasa.gov/detail/bennu',
+        defaults: function() {
+            return {
+                scale: M.p3(0.7, 0.7, 0.7),
+                withPoints: false,
+                rotate: M.p3(106.5, 242.0, 242.0),
+                autorotate: {
+                    x: false,
+                    y: true,
+                    z: false,
+                },
             };
         },
     },
