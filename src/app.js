@@ -280,6 +280,17 @@ const About = {
     },
 };
 
+const ParserNotifications = {
+    view: function() {
+        const { parsing } = State;
+        return [
+            m('span', {
+                className: (parsing) ? 'parser loading' : 'parser ready'
+            }, parsing),
+        ];
+    },
+};
+
 const ObjFile = {
     view: function() {
         return [
@@ -323,6 +334,7 @@ const App = {
                 m('#dreidee.pure-u-1-2'),
                 m('.pure-u-1-2.pure-form.app--controls.xsmall', [
                     m(Models),
+                    m(ParserNotifications),
                     m(About),
                     m(Translate),
                     m(Rotate),
