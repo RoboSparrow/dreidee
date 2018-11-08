@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const BUILD_PATH = path.resolve(__dirname, 'build');
 
@@ -66,5 +67,9 @@ module.exports = {
         }),
         // hmr
         new webpack.HotModuleReplacementPlugin(),
+        // copy static
+        new CopyWebpackPlugin([{
+            from: 'static/**/*',
+        }]),
     ]
 };

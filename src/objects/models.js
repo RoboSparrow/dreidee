@@ -2,7 +2,7 @@ import M from '../matrix';
 
 const Models = Object.freeze([
     {
-        url: '../static/humanoid_tri.obj',
+        url: './static/humanoid_tri.obj',
         name: 'Humanoid shape',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -11,7 +11,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/cube.obj',
+        url: './static/cube.obj',
         name: 'Cube',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -20,7 +20,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/al.obj',
+        url: './static/al.obj',
         name: 'Al, a cartoonish mobster',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -30,7 +30,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/magnolia.obj',
+        url: './static/magnolia.obj',
         name: 'Magnolia blossom',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -40,7 +40,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/shuttle.obj',
+        url: './static/shuttle.obj',
         name: 'Space Shuttle',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -49,7 +49,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/skyscraper.obj',
+        url: './static/skyscraper.obj',
         name: 'Skyscraper',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -60,7 +60,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/violin_case.obj',
+        url: './static/violin_case.obj',
         name: 'Violin case',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -69,7 +69,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/cessna.obj',
+        url: './static/cessna.obj',
         name: 'Cessna airplane',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -79,7 +79,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/lamp.obj',
+        url: './static/lamp.obj',
         name: 'Lamp',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -89,7 +89,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/octahedron.obj',
+        url: './static/octahedron.obj',
         name: 'Dodecahedron',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -98,7 +98,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/sandal.obj',
+        url: './static/sandal.obj',
         name: 'Sandal',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -107,7 +107,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/airboat.obj',
+        url: './static/airboat.obj',
         name: 'Airboat',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -118,7 +118,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/power_lines.obj',
+        url: './static/power_lines.obj',
         name: 'Power lines',
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
@@ -134,7 +134,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/Bennu-Radar.obj',
+        url: './static/Bennu-Radar.obj',
         name: '101955 Bennu asteroid',
         info: 'Authors: Michael C. Nolan/Arecibo Observatory/NASA/NSF,<br>courtesy <a href="https://nasa3d.arc.nasa.gov/detail/bennu" target="_blank">NASA 3D Resources</a>',
         defaults: function() {
@@ -144,7 +144,7 @@ const Models = Object.freeze([
             };
         },
     }, {
-        url: '../static/nefertiti.obj',
+        url: './static/nefertiti.obj',
         name: 'Nefertiti Hack Reduced',
         info: 'courtesy <a href="http://nefertitihack.alloversky.com/" target="_blank">Nora Al-Badri and Jan Nikolai Nelles<a/>, decimated model by <a href="https://sketchfab.com/zafio" target="_blank">Zafio</a>',
         defaults: function() {
