@@ -126,8 +126,8 @@ const mapPolygons = function(points, polygons) {
     return r;
 };
 
-const parse = function(txt) {
-
+const parse = function(txt, notify) {
+    notify('parsing obj file');
     return new Promise((resolve, reject) => {
 
         const lines = txt.split(/\r\n|[\n\v\f\r\x85\u2028\u2029]/);
@@ -174,6 +174,8 @@ const parse = function(txt) {
 
         }
 
+        notify(null);
+
         resolve({
             contents: txt,
             stats: {
@@ -188,10 +190,11 @@ const parse = function(txt) {
 
 };
 
-const parseFromUrl = function(url) {
+const parseFromUrl = function(url, notify) {
+    notify('fetching' + url);
     return fetch(url)
         .then(response => response.text())
-        .then(contents => parse(contents));
+        .then(contents => parse(contents, notify));
 };
 
 export default {

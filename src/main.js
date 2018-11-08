@@ -14,6 +14,9 @@ const defaults = function(model) {
 
     // defaults
     return Object.assign({
+        // parsing
+        parsing: '',
+
         // info
         name: (model) ? model.name : '',
         info: (model) ? model.info : '',
@@ -81,7 +84,8 @@ const resetState = function() {
 //// object managment
 
 const setObject = function(model) {
-    ShittyParser.parseFromUrl(model.url)
+
+    ShittyParser.parseFromUrl(model.url, message => setState({ parsing: message }))
         .then((obj) => {
             Obj = obj;
             Model = model;
