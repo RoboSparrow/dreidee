@@ -116,11 +116,14 @@ const update = function(ctx) {
         return;
     }
 
-    ctx.clearRect(0, 0, 400, 300);
+    const { width, height } = ctx.canvas;
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, width, height);
 
     const origin = M.p2(
-        ctx.canvas.width / 2,
-        ctx.canvas.height / 2,
+        width / 2,
+        height / 2,
     );
 
     const delta = performance.now();
@@ -190,7 +193,7 @@ const update = function(ctx) {
 };
 
 const init = function(canvas) {
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     canvas.width = 400;
     canvas.height = 300;
     canvas.style.border = '1px solid black';
