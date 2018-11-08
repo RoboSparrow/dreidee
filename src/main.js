@@ -62,6 +62,7 @@ let Obj = null;
 const State = defaults();
 let polygons = [];
 const stats = new Stats();
+let animationId = 0;
 
 //// state managment
 
@@ -126,8 +127,8 @@ const update = function(ctx) {
         height / 2,
     );
 
-    const delta = performance.now();
-    const ang = delta / 500;
+    const delta = animationId;//performance.now();
+    const ang = delta / 50;
 
     const { cameraFrom, rotate, translate, scale, autorotate, drawingStyle, withAxes, withObjectInfo } = State;
     const safeState = getState();
@@ -181,15 +182,18 @@ const update = function(ctx) {
     //// info
 
     if (withObjectInfo) {
+        ctx.save();
+        ctx.fillStyle = '#999999';
         ctx.fillText(`camera ${cameraFrom.toString()}`, 10, ctx.canvas.height - 10);
         ctx.fillText(`rotate ${rotate.toString()}`, 10, ctx.canvas.height - 20);
         ctx.fillText(`translate ${translate.toString()}`, 10, ctx.canvas.height - 30);
         ctx.fillText(`scale ${scale.toString()}`, 10, ctx.canvas.height - 40);
+        ctx.restore();
     }
 
     //// recurse
     stats.end();
-    window.requestAnimationFrame(update.bind(null, ctx));
+    animationId = window.requestAnimationFrame(update.bind(null, ctx));
 };
 
 const init = function(canvas) {
