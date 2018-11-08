@@ -72,13 +72,15 @@ const getState = function() {
     return Object.assign({}, State);
 };
 
-const setState = function(updates) {
+const setState = function(updates, updateFlag = true) {
     Object.assign(State, updates);
+    State.updated = updateFlag;
     document.dispatchEvent(updateEvent);
 };
 
 const resetState = function() {
     Object.assign(State, defaults(Model));
+    State.updated = true;
     document.dispatchEvent(updateEvent);
 };
 
@@ -112,7 +114,7 @@ const mw = idendityMatrix();
 const update = function(ctx) {
     stats.begin();
 
-    if (!Obj) {
+    if (!Obj || !State.updated) {
         window.requestAnimationFrame(update.bind(null, ctx));
         return;
     }
@@ -135,13 +137,17 @@ const update = function(ctx) {
 
     //// state managment
 
+    State.updated = false;
     if (autorotate.x) {
+        State.updated = true;
         rotate[0] = ang;
     }
     if (autorotate.y) {
+        State.updated = true;
         rotate[1] = ang;
     }
     if (autorotate.z) {
+        State.updated = true;
         rotate[2] = ang;
     }
 
