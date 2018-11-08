@@ -70,14 +70,15 @@ const drawPaths = function(ctx, paths, center, state) {
             }
         }
         ctx.closePath();
+        if (withFill) {
+            ctx.fill();
+        }
     }
 
     if (withLines) {
         ctx.stroke();
     }
-    if (withFill) {
-        ctx.fill();
-    }
+
     ctx.restore();
 };
 
