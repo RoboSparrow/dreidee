@@ -6,7 +6,10 @@ const locatePixel2D = function(x, y, width) {
 const drawPixels = function(ctx, paths, center) {
     const { width, height } = ctx.canvas;
 
+    ctx.save();
+    ctx.fillStyle = '#101010';
     ctx.fillRect(0, 0, width, height);
+
     const imageData = ctx.getImageData(0, 0, width, height);
 
     let red;
@@ -31,6 +34,7 @@ const drawPixels = function(ctx, paths, center) {
     }
 
     ctx.putImageData(imageData, 0, 0);
+    ctx.restore();
 };
 
 const drawPaths = function(ctx, paths, center, state) {
@@ -65,9 +69,8 @@ const drawPaths = function(ctx, paths, center, state) {
                 ctx.restore();
             }
         }
-
+        ctx.closePath();
     }
-    ctx.closePath();
 
     if (withLines) {
         ctx.stroke();
