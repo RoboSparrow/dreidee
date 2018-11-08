@@ -2,4 +2,5 @@
 - error display
 - ~~drawing options for points, lines, shapes~~
 - optimizations
-- pixel projection for hig densidty models
+- ~~pixel projection for hig density models~~
+- rotation inputs: degrees
