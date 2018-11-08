@@ -154,7 +154,7 @@ const Models = Object.freeze([
                 rotate: M.p3(106.5, 242.0, 242.0),
                 autorotate: {
                     x: false,
-                    y: true,
+                    y: false,
                     z: false,
                 },
             };
