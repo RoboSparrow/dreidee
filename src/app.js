@@ -84,6 +84,51 @@ const Rotate = {
     },
 };
 
+const CameraFrom = function() {
+    let show = false;
+
+    return {
+
+        view: function() {
+            return [
+                m('a', { onclick: () => { show = !show; } }, `${(show) ? '[-]' : '[+]'} camera controls`),
+                m('p.section', { style: (show) ? 'display: block' : 'display: none' }, [
+                    m('input[type=range][min=-200][max=200]', {
+                        value: State.cameraFrom[0],
+                        onchange: (e) => {
+                            const { cameraFrom } = State;
+                            cameraFrom[0] = e.target.value;
+                            setState({ cameraFrom });
+                        },
+                    }),
+                    m('label', `cameraFromX ${State.cameraFrom[0]}`),
+                    m('br'),
+                    m('input[type=range][min=-200][max=200]', {
+                        value: State.cameraFrom[1],
+                        onchange: (e) => {
+                            const { cameraFrom } = State;
+                            cameraFrom[1] = e.target.value;
+                            setState({ cameraFrom });
+                        },
+                    }),
+                    m('label', `cameraFromY ${State.cameraFrom[1]}`),
+                    m('br'),
+                    m('input[type=range][min=200][max=1000]', {
+                        value: State.cameraFrom[2],
+                        onchange: (e) => {
+                            const { cameraFrom } = State;
+                            cameraFrom[2] = e.target.value;
+                            setState({ cameraFrom });
+                        },
+                    }),
+                    m('label', `cameraFromZ ${State.cameraFrom[2]}`),
+                ]),
+            ];
+        },
+
+    };
+};
+
 const Scale = {
     view: function() {
         return [
@@ -331,7 +376,13 @@ const App = {
                 m('.pure-u-1-2.intro', ''),
                 m('.pure-u-1-2.intro', 'A shitty 3 renderer for canvas 2D.'),
 
-                m('#dreidee.pure-u-1-2'),
+                m('.pure-u-1-2', [
+                    m('#dreidee'),
+                    m('.pure-form.app--controls.xsmall', [
+                        m(CameraFrom),
+                    ]),
+                ]),
+
                 m('.pure-u-1-2.pure-form.app--controls.xsmall', [
                     m(Models),
                     m(ParserNotifications),
