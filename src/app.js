@@ -373,17 +373,17 @@ const App = {
         return [
             m('main.pure-g', [
 
-                m('.pure-u-1-2.intro', ''),
-                m('.pure-u-1-2.intro', 'A shitty 3 renderer for canvas 2D.'),
+                m('.pure-u-1.pure-u-md-1-2.intro', ''),
+                m('.pure-u-1.pure-u-md-1-2.intro', 'A shitty 3 renderer for canvas 2D.'),
 
-                m('.pure-u-1-2', [
+                m('.pure-u-1.pure-u-md-1-2', [
                     m('#dreidee'),
                     m('.pure-form.app--controls.xsmall', [
                         m(CameraFrom),
                     ]),
                 ]),
 
-                m('.pure-u-1-2.pure-form.app--controls.xsmall', [
+                m('.pure-u-1.pure-u-md-1-2.pure-form.app--controls.xsmall', [
                     m(Models),
                     m(ParserNotifications),
                     m(About),
@@ -397,10 +397,10 @@ const App = {
                     m(Reset),
                 ]),
 
-                m('.pure-u-1-2.xsmall', [
+                m('.pure-u-1.pure-u-md-1-2.xsmall', [
                     m(ObjFile),
                 ]),
-                m('.pure-u-1-2.xsmall', [
+                m('.pure-u-1.pure-u-md-1-2.xsmall', [
                     m(PrettyPrint, { data: State }),
                 ]),
 

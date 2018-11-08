@@ -1,3 +1,13 @@
+a {
+    color: #3b8bba;
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
+    cursor: pointer;
+}
+
 .xsmall{
     font-size: 70%;
 }
