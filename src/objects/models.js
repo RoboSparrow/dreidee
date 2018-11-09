@@ -151,10 +151,10 @@ const Models = Object.freeze([
             return {
                 scale: M.p3(0.7, 0.7, 0.7),
                 withPoints: false,
-                rotate: M.p3(106.5, 242.0, 242.0),
+                rotate: M.p3(0, 0.35, 0),
                 autorotate: {
                     x: false,
-                    y: false,
+                    y: true,
                     z: false,
                 },
             };

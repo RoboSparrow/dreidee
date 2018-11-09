@@ -37,7 +37,6 @@ const defaults = function(model) {
             x: true,
             y: true,
             z: false,
-            delta: 0.015,
         },
 
         // drawing
@@ -111,6 +110,7 @@ const getObjContents = function() {
 //// update
 
 const mw = idendityMatrix();
+const delta = 0.015;
 
 const update = function(ctx) {
     stats.begin();
@@ -138,15 +138,15 @@ const update = function(ctx) {
     State.updated = false;
     if (autorotate.x) {
         State.updated = true;
-        rotate[0] += autorotate.delta;
+        rotate[0] += delta;
     }
     if (autorotate.y) {
         State.updated = true;
-        rotate[1] += autorotate.delta;
+        rotate[1] += delta;
     }
     if (autorotate.z) {
         State.updated = true;
-        rotate[2] += autorotate.delta;
+        rotate[2] += delta;
     }
 
     //// calculate
