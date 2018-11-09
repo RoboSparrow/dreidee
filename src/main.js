@@ -37,6 +37,7 @@ const defaults = function(model) {
             x: true,
             y: true,
             z: false,
+            delta: 0.015,
         },
 
         // drawing
@@ -129,9 +130,6 @@ const update = function(ctx) {
         height / 2,
     );
 
-    const delta = animationId;//performance.now();
-    const ang = delta / 50;
-
     const { cameraFrom, rotate, translate, scale, autorotate, drawingStyle, withAxes, withObjectInfo } = State;
     const safeState = getState();
 
@@ -140,15 +138,15 @@ const update = function(ctx) {
     State.updated = false;
     if (autorotate.x) {
         State.updated = true;
-        rotate[0] = ang;
+        rotate[0] += autorotate.delta;
     }
     if (autorotate.y) {
         State.updated = true;
-        rotate[1] = ang;
+        rotate[1] += autorotate.delta;
     }
     if (autorotate.z) {
         State.updated = true;
-        rotate[2] = ang;
+        rotate[2] += autorotate.delta;
     }
 
     //// calculate
@@ -189,11 +187,12 @@ const update = function(ctx) {
 
     if (withObjectInfo) {
         ctx.save();
+        ctx.fillText(`${animationId}`, 5, 10);
         ctx.fillStyle = '#999999';
-        ctx.fillText(`camera ${cameraFrom.toString()}`, 10, ctx.canvas.height - 10);
-        ctx.fillText(`rotate ${rotate.toString()}`, 10, ctx.canvas.height - 20);
-        ctx.fillText(`translate ${translate.toString()}`, 10, ctx.canvas.height - 30);
-        ctx.fillText(`scale ${scale.toString()}`, 10, ctx.canvas.height - 40);
+        ctx.fillText(`camera ${cameraFrom.toString()}`, 5, ctx.canvas.height - 5);
+        ctx.fillText(`rotate ${rotate.toString()}`, 5, ctx.canvas.height - 15);
+        ctx.fillText(`translate ${translate.toString()}`, 5, ctx.canvas.height - 25);
+        ctx.fillText(`scale ${scale.toString()}`, 5, ctx.canvas.height - 35);
         ctx.restore();
     }
 
