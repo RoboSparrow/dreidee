@@ -55,9 +55,9 @@ const drawPaths = function(ctx, paths, center, state) {
     const lpaths = paths.length;
     let lpoints;
 
-    ctx.beginPath();
     for (i = 0; i < lpaths; i += 1) {
         lpoints = paths[i].length;
+        ctx.beginPath();
 
         for (k = 0; k < lpoints; k += 1) {
             point = paths[i][k];
@@ -75,14 +75,14 @@ const drawPaths = function(ctx, paths, center, state) {
                 ctx.restore();
             }
         }
+
         ctx.closePath();
         if (withFill) {
             ctx.fill();
         }
-    }
-
-    if (withLines) {
-        ctx.stroke();
+        if (withLines) {
+            ctx.stroke();
+        }
     }
 
     ctx.restore();
