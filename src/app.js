@@ -113,7 +113,7 @@ const CameraFrom = function() {
                     }),
                     m('label', `cameraFromY ${State.cameraFrom[1]}`),
                     m('br'),
-                    m('input[type=range][min=200][max=1000]', {
+                    m('input[type=range][min=10][max=1000]', {
                         value: State.cameraFrom[2],
                         onchange: (e) => {
                             const { cameraFrom } = State;
