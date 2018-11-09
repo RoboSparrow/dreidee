@@ -146,7 +146,7 @@ const Models = Object.freeze([
     }, {
         url: './static/nefertiti.obj',
         name: 'Nefertiti Hack Reduced',
-        info: 'courtesy <a href="http://nefertitihack.alloversky.com/" target="_blank">Nora Al-Badri and Jan Nikolai Nelles<a/>, decimated model by <a href="https://sketchfab.com/zafio" target="_blank">Zafio</a>',
+        info: 'courtesy <a href="http://nefertitihack.alloversky.com/" target="_blank">Nora Al-Badri and Jan Nikolai Nelles</a>, decimated model by <a href="https://sketchfab.com/zafio" target="_blank">Zafio</a>',
         defaults: function() {
             return {
                 scale: M.p3(0.7, 0.7, 0.7),
