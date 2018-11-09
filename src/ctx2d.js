@@ -1,6 +1,12 @@
 
-const locatePixel2D = function(x, y, width) {
-    return y * (width * 4) + x * 4;
+const locatePixel2D = function(p2, width) {
+    return p2[1] * (width * 4) + p2[0] * 4;
+};
+
+const locateCanvas2d = function(p2, center) {
+    const x = Math.floor(p2[0]) + center[0];
+    const y = center[1] - Math.floor(p2[1]);
+    return [x, y];
 };
 
 const drawPixels = function(ctx, paths, center) {
@@ -16,6 +22,7 @@ const drawPixels = function(ctx, paths, center) {
     let i;
     let k;
     let point;
+    let p2;
     const lpaths = paths.length;
     let lpoints;
 
@@ -23,10 +30,9 @@ const drawPixels = function(ctx, paths, center) {
         lpoints = paths[i].length;
         for (k = 0; k < lpoints; k += 1) {
             point = paths[i][k];
-            const x = Math.floor(point[0] + center[0]);
-            const y = Math.floor(point[1] + center[1]);
+            p2 = locateCanvas2d(point, center);
 
-            red = locatePixel2D(x, y, width);
+            red = locatePixel2D(p2, width);
             imageData.data[red] = 255;
             imageData.data[red + 1] = 255;
             imageData.data[red + 2] = 255;
@@ -55,8 +61,8 @@ const drawPaths = function(ctx, paths, center, state) {
 
         for (k = 0; k < lpoints; k += 1) {
             point = paths[i][k];
-            const x = Math.floor(point[0]) + center[0];
-            const y = Math.floor(point[1]) + center[1];
+            const [x, y] = locateCanvas2d(point, center);
+
             if (k === 0) {
                 ctx.moveTo(x, y);
             }
@@ -82,27 +88,40 @@ const drawPaths = function(ctx, paths, center, state) {
     ctx.restore();
 };
 
-const drawLine = function(ctx, points, center, color, txt = '') {
+const drawLine = function(ctx, points, center, color = '', text = '') {
     ctx.save();
-    ctx.strokeStyle = color;
+    if (color) {
+        ctx.strokeStyle = color;
+    }
     ctx.beginPath();
+    let x;
+    let y;
 
     points.forEach((point, index) => {
-        const x = point[0] + center[0];
-        const y = point[1] + center[1];
+        ([x, y] = locateCanvas2d(point, center));
         if (index === 0) {
             ctx.moveTo(x, y);
         }
         ctx.lineTo(x, y);
     });
 
-    if (txt) {
+    if (text) {
         ctx.fillStyle = color;
-        const last = points[points.length - 1];
-        ctx.fillText(txt, last[0] + center[0], last[1] + center[1]);
+        ctx.fillText(text, x, y);
     }
 
     ctx.stroke();
+    ctx.restore();
+};
+
+const drawText = function(ctx, text, point, center, options = {}) {
+    ctx.save();
+    let prop;
+    for (prop in options) { // eslint-disable-line guard-for-in
+        ctx[prop] = options[prop];
+    }
+    const [x, y] = locateCanvas2d(point, center);
+    ctx.fillText(text, x, y);
     ctx.restore();
 };
 
@@ -110,4 +129,5 @@ export default {
     pixels: drawPixels,
     paths: drawPaths,
     line: drawLine,
+    text: drawText,
 };
