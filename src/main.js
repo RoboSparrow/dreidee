@@ -4,6 +4,7 @@
 import Stats from 'stats.js';
 
 import M, { idendityMatrix } from './matrix';
+import { P3, P2 } from './point';
 import R from './renderer';
 
 import models from './objects/models';
@@ -27,10 +28,10 @@ const defaults = function(model) {
         points: 0,
 
         // geometry
-        translate: M.p3(),
-        rotate: M.p3(),
-        cameraFrom: M.p3(0, 0, 1000),
-        scale: M.p3(1, 1, 1),
+        translate: P3.p(),
+        rotate: P3.p(),
+        cameraFrom: P3.p(0, 0, 1000),
+        scale: P3.p(1, 1, 1),
 
         //animation
         autorotate: {
@@ -114,7 +115,7 @@ const delta = 0.015;
 
 const update = function(ctx) {
     stats.begin();
-
+    State.updated = true;//dev
     if (!Obj || !State.updated) {
         window.requestAnimationFrame(update.bind(null, ctx));
         return;
@@ -125,7 +126,7 @@ const update = function(ctx) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, width, height);
 
-    const origin = M.p2(
+    const origin = P2.p(
         width / 2,
         height / 2,
     );
@@ -162,6 +163,24 @@ const update = function(ctx) {
     m = M.multiply(s, r);
     m = M.multiply(t, m);
 
+    const fov = 1.0; //0.7;
+    const aspect = 1.0; //width / height;
+    const near = 0.1;
+    const far = 1000.0;
+    const ppm = R.perspectiveProjectionMatrix(fov, aspect, near, far);
+
+    const distance = 4;
+    const rot = performance.now() / 1000;
+    //const rot = 0;
+
+    const from = P3.p(distance * rot, distance * rot, distance * rot);
+    const to = P3.p(0, 0, 0);
+    const up = P3.p(0, 1, 0);
+
+    const lam = R.lookAtMatrix(from, to, up);
+
+    m = M.multiply(m, lam);
+    m = M.multiply(m, ppm);
     //// project and draw
 
     const paths = polygons.map(path => path.map(point => R.project(point, cameraFrom, m)));
