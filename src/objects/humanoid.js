@@ -1,4 +1,5 @@
 import M from '../matrix';
+import { P3 } from '../point';
 
 //// Geometry of a Humanoid
 // stolen from http://people.sc.fsu.edu/~jburkardt/data/obj/obj.html
@@ -177,7 +178,7 @@ const getPolygons = function() {
 
 const objectDefaults = function() {
     return {
-        scale: M.p3(10, 10, 10),
+        scale: P3.p(10, 10, 10),
     };
 };
 

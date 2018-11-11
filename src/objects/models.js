@@ -1,4 +1,4 @@
-import M from '../matrix';
+import { P3 } from '../point';
 
 const Models = Object.freeze([
     {
@@ -7,7 +7,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(10, 10, 10),
+                scale: P3.p(10, 10, 10),
             };
         },
     }, {
@@ -16,7 +16,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(40, 40, 40),
+                scale: P3.p(40, 40, 40),
             };
         },
     }, {
@@ -25,7 +25,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(40, 40, 40),
+                scale: P3.p(40, 40, 40),
                 withPoints: false,
             };
         },
@@ -45,7 +45,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(20, 20, 20),
+                scale: P3.p(20, 20, 20),
             };
         },
     }, {
@@ -54,7 +54,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(3.5, 3.5, 3.5),
+                scale: P3.p(3.5, 3.5, 3.5),
                 withPoints: false,
                 withFill: true,
             };
@@ -65,7 +65,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(80, 80, 80),
+                scale: P3.p(80, 80, 80),
             };
         },
     }, {
@@ -74,7 +74,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(10, 10, 10),
+                scale: P3.p(10, 10, 10),
                 withPoints: false,
             };
         },
@@ -84,7 +84,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(15, 15, 15),
+                scale: P3.p(15, 15, 15),
                 withPoints: false,
             };
         },
@@ -94,7 +94,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(50, 50, 50),
+                scale: P3.p(50, 50, 50),
             };
         },
     }, {
@@ -103,7 +103,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(30, 30, 30),
+                scale: P3.p(30, 30, 30),
             };
         },
     }, {
@@ -112,7 +112,7 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(20, 20, 20),
+                scale: P3.p(20, 20, 20),
                 withPoints: false,
                 withFill: true,
             };
@@ -123,8 +123,8 @@ const Models = Object.freeze([
         info: 'courtesy <a href="https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html" target="_blank">John Burkardt\'s obj file samples</a>',
         defaults: function() {
             return {
-                scale: M.p3(2, 2, 2),
-                rotate: M.p3(0, 0, Math.PI),
+                scale: P3.p(2, 2, 2),
+                rotate: P3.p(0, 0, Math.PI),
                 withPoints: false,
                 autorotate: {
                     x: true,
@@ -139,7 +139,7 @@ const Models = Object.freeze([
         info: 'Authors: Michael C. Nolan/Arecibo Observatory/NASA/NSF,<br>courtesy <a href="https://nasa3d.arc.nasa.gov/detail/bennu" target="_blank">NASA 3D Resources</a>',
         defaults: function() {
             return {
-                scale: M.p3(200, 200, 200),
+                scale: P3.p(200, 200, 200),
                 withPoints: false,
             };
         },
@@ -149,9 +149,9 @@ const Models = Object.freeze([
         info: 'courtesy <a href="http://nefertitihack.alloversky.com/" target="_blank">Nora Al-Badri and Jan Nikolai Nelles</a>, decimated model by <a href="https://sketchfab.com/zafio" target="_blank">Zafio</a>',
         defaults: function() {
             return {
-                scale: M.p3(0.7, 0.7, 0.7),
+                scale: P3.p(0.7, 0.7, 0.7),
                 withPoints: false,
-                rotate: M.p3(0, 0.35, 0),
+                rotate: P3.p(0, 0.35, 0),
                 autorotate: {
                     x: false,
                     y: true,
