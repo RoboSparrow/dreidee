@@ -188,19 +188,12 @@ const R = {
     lookAtMatrix: function(from, to, up) {
         const EPSILON = 0.000001;
         const m = nullMatrix();
-        let x0 = 0;
-        let x1 = 0;
-        let x2 = 0;
 
-        let y0 = 0;
-        let y1 = 0;
-        let y2 = 0;
+        let x;
+        let y;
+        let z;
 
-        let z0 = 0;
-        let z1 = 0;
-        let z2 = 0;
-
-        let len = 0;
+        // z
 
         if (Math.abs(from[0] - to[0]) < EPSILON
             && Math.abs(from[1] - to[1]) < EPSILON
@@ -208,65 +201,53 @@ const R = {
             return idendityMatrix();
         }
 
-        z0 = from[0] - to[0];
-        z1 = from[1] - to[1];
-        z2 = from[2] - to[2];
+        z = P3.substract(from, to);
+        const lenZ = P3.length(z); // eslint-disable-line prefer-const
+        z = P3.scale(z, 1 / lenZ);
 
-        len = 1 / Math.sqrt(z0 * z0 + z1 * z1 + z2 * z2);
-        z0 *= len;
-        z1 *= len;
-        z2 *= len;
+        // x
 
-        x0 = up[1] * z2 - up[2] * z1;
-        x1 = up[2] * z0 - up[0] * z2;
-        x2 = up[0] * z1 - up[1] * z0;
-        len = Math.sqrt(x0 * x0 + x1 * x1 + x2 * x2);
-        if (!len) {
-            x0 = 0;
-            x1 = 0;
-            x2 = 0;
+        x = P3.crossProduct(up, z);
+        const lenX = P3.length(x);
+
+        if (!lenX) {
+            x = P3.p();
         } else {
-            len = 1 / len;
-            x0 *= len;
-            x1 *= len;
-            x2 *= len;
+            x = P3.scale(x, 1 / lenX);
         }
 
-        y0 = z1 * x2 - z2 * x1;
-        y1 = z2 * x0 - z0 * x2;
-        y2 = z0 * x1 - z1 * x0;
+        // y
 
-        len = Math.sqrt(y0 * y0 + y1 * y1 + y2 * y2);
-        if (!len) {
-            y0 = 0;
-            y1 = 0;
-            y2 = 0;
+        y = P3.crossProduct(z, x);
+        const lenY = P3.length(y);
+
+        if (!lenY) {
+            y = P3.p();
         } else {
-            len = 1 / len;
-            y0 *= len;
-            y1 *= len;
-            y2 *= len;
+            y = P3.scale(y, 1 / lenY);
         }
 
-        m[0] = x0;
-        m[1] = y0;
-        m[2] = z0;
+        /* eslint-disable prefer-destructuring */
+        m[0] = x[0];
+        m[1] = y[0];
+        m[2] = z[0];
         m[3] = 0;
-        m[4] = x1;
-        m[5] = y1;
-        m[6] = z1;
+        m[4] = x[1];
+        m[5] = y[1];
+        m[6] = z[1];
         m[7] = 0;
-        m[8] = x2;
-        m[9] = y2;
-        m[10] = z2;
+        m[8] = x[2];
+        m[9] = y[2];
+        m[10] = z[2];
         m[11] = 0;
-        m[12] = -(x0 * from[0] + x1 * from[1] + x2 * from[2]);
-        m[13] = -(y0 * from[0] + y1 * from[1] + y2 * from[2]);
-        m[14] = -(z0 * from[0] + z1 * from[1] + z2 * from[2]);
+        m[12] = -(x[0] * from[0] + x[1] * from[1] + x[2] * from[2]);
+        m[13] = -(y[0] * from[0] + y[1] * from[1] + y[2] * from[2]);
+        m[14] = -(z[0] * from[0] + z[1] * from[1] + z[2] * from[2]);
         m[15] = 1;
+        /* eslint-enable prefer-destructuring */
 
         return m;
-    }
+    },
 
 };
 
