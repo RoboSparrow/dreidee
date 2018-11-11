@@ -163,6 +163,7 @@ const update = function(ctx) {
     m = M.multiply(s, r);
     m = M.multiply(t, m);
 
+    //TODO to state, decide what to to do with cameraFrom, autorotate to camera
     const fov = 1.0; //0.7;
     const aspect = 1.0; //width / height;
     const near = 0.1;
@@ -170,7 +171,7 @@ const update = function(ctx) {
     const ppm = R.perspectiveProjectionMatrix(fov, aspect, near, far);
 
     const distance = 4;
-    const rot = performance.now() / 1000;
+    const rot = performance.now() / 1000; //TODO!
     //const rot = 0;
 
     const from = P3.p(distance * rot, distance * rot, distance * rot);
@@ -181,6 +182,7 @@ const update = function(ctx) {
 
     m = M.multiply(m, lam);
     m = M.multiply(m, ppm);
+
     //// project and draw
 
     const paths = polygons.map(path => path.map(point => R.project(point, cameraFrom, m)));
