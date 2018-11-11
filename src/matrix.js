@@ -64,32 +64,16 @@ const idendityMatrix = function() {
     ]);
 };
 
+const nullMatrix = function() {
+    return new Float32Array([
+        0, 0, 0, 0, // |  0  1  2  3 |
+        0, 0, 0, 0, // |  4  5  6  7 |
+        0, 0, 0, 0, // |  9  8 10 11 |
+        0, 0, 0, 0, // | 12 13 14 15 |
+    ]);
+};
+
 const M = {
-
-    p2: function(...args) {
-        if (typeof args[0] === 'number') {
-            return new Float32Array(args);
-        }
-        return new Float32Array(2);
-    },
-
-
-    p3: function(...args) {
-        if (typeof args[0] === 'number') {
-            return new Float32Array(args);
-        }
-        return new Float32Array(3);
-    },
-
-
-    p4: function(...args) {
-        if (typeof args[0] === 'number') {
-            const w = 1;
-            return new Float32Array([args[0], args[1], args[2], w]);
-        }
-        return new Float32Array(4);
-    },
-
     augmentP: function(p) {
         // returns M1x4 point [x, y, z, 1]
         return new Float32Array([p[0], p[1], p[2], 1]);
@@ -197,6 +181,16 @@ const M = {
         return m;
     },
 
+    pretty: function(m) {
+        const { length } = m;
+        let i;
+        let r = '[\n';
+        for (i = 0; i < length; i += 4) {
+            r += ('    ' + m[i] + ', ' + m[i + 1] + ', ' + m[i + 2] + ', ' + m[i + 3] + ',\n');
+        }
+        r += ']';
+        return r;
+    },
 };
 
-export { M as default, idendityMatrix };
+export { M as default, idendityMatrix, nullMatrix };
