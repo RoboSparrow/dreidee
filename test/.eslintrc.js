@@ -10,5 +10,8 @@ module.exports = {
         node: true,
         mocha: true
     },
+    rules: {
+        'prefer-arrow-callback': 'off', // mocha recommends "function" callbacks
+    },
     extends: '../.eslintrc.js'
 };
