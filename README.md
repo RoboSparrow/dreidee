@@ -2,10 +2,10 @@
 
 WIP
 
-A shitty 3 renderer experiment for canvas 2D. (curr. central perspective only).
-This is an experiment for learning and understanding 3d projections and matrix 4x4.
+A shitty 3D renderer experiment for canvas 2D. (curr. central perspective only).
+This is an experiment for learning and understanding 3D projections and matrix 4x4 calculations.
 
-Don't use it. Consider [glmatix](http://glmatrix.net/), [twgl](http://twgljs.org) or [Three](https://threejs.org/) instead.
+Don't use it. Consider [glmatix](http://glmatrix.net/), [twgl](http://twgljs.org) or [ThreeJs](https://threejs.org/) instead.
 
 ## Resources
 
