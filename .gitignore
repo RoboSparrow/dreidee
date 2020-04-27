@@ -1,6 +1,0 @@
-.env
-
-_dev/
-node_modules/
-build/
-npm-debug.log

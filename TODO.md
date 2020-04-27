@@ -1,8 +1,0 @@
-- ~~name, link display~~
-- error display
-- ~~drawing options for points, lines, shapes~~
-- optimizations
-- ~~pixel projection for hig density models~~
-- rotation inputs: degrees
-- parser - webworker
-- perspective camera
