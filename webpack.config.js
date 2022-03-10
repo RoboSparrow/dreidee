@@ -26,14 +26,14 @@ module.exports = {
     module: {
         rules: [{
             // eslint-loader
-            enforce: "pre", // force source files untouced by other loaders
+            enforce: 'pre', // force source files untouced by other loaders
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: "eslint-loader",
+            loader: 'eslint-loader',
         }, {
             // css-loader
-            test: /\.css$/,
-            use: [ 'style-loader', 'css-loader' ],
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
         }, {
             // file-loader
             test: /\.(png|svg|jpg|gif)$/,
