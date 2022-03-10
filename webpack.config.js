@@ -4,7 +4,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const BUILD_PATH = path.resolve(__dirname, 'build');
@@ -47,17 +47,19 @@ module.exports = {
         port: 3008,
         open: true,
         hot: true,
-        stats: {
-            // minimal output on development terminal, show eslint errors and warns, surpress other stats
-            assets: false,
-            children: false,
-            modules: false,
+        devMiddleware: {
+            stats: {
+                // minimal output on development terminal, show eslint errors and warns, surpress other stats
+                assets: false,
+                children: false,
+                modules: false,
+            },
         },
     },
 
     plugins: [
         // clean up build folder
-        new CleanWebpackPlugin([ BUILD_PATH ], {
+        new CleanWebpackPlugin({
             root: process.cwd(),
         }),
         // parse and copy index.html
@@ -68,8 +70,10 @@ module.exports = {
         // hmr
         new webpack.HotModuleReplacementPlugin(),
         // copy static
-        new CopyWebpackPlugin([{
-            from: 'static/**/*',
-        }]),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'static/**/*', to: BUILD_PATH },
+            ],
+        }),
     ]
 };
