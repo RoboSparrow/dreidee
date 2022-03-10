@@ -1,6 +1,7 @@
 .env
 
 _dev/
+_dev.*
 node_modules/
 build/
 npm-debug.log
